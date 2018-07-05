@@ -1,0 +1,108 @@
+{
+    "desc": "Create and auto generate + check question sheets",
+    "name": "Eximer",
+    "note": {},
+    "tags": [
+        {
+            "parser": {
+                "desc": "the c++ parser of the exams"
+            }
+        },
+        {
+            "frontend": {
+                "desc": "the web frontend dev"
+            }
+        },
+        {
+            "backend": {
+                "desc": "all the web base backend"
+            }
+        },
+        {
+            "admin": {
+                "desc": "administration tools development"
+            }
+        }
+    ],
+    "tasker": {
+        "allowdelete": true,
+        "enableloads": true,
+        "usecolors": true,
+        "version": "1.0.0"
+    },
+    "tasks": [
+        {
+            "cancel": false,
+            "created": "05-07-2018 20:56:26",
+            "load": 4,
+            "plan": [
+                {
+                    "date": "",
+                    "user": "shlomi",
+                    "v": "0.0.1"
+                }
+            ],
+            "report": [],
+            "status": 0.0,
+            "tagged": [
+                "parser"
+            ],
+            "task": "Integrate json parser for better response options",
+            "updated": "05-07-2018 20:56:26"
+        },
+        {
+            "cancel": false,
+            "created": "05-07-2018 21:00:50",
+            "load": 4,
+            "plan": [
+                {
+                    "date": "",
+                    "user": "shlomi",
+                    "v": "0.0.1"
+                }
+            ],
+            "report": [],
+            "status": 0.0,
+            "tagged": [
+                "parser"
+            ],
+            "task": "Add the params parser to set options",
+            "updated": "05-07-2018 21:00:50"
+        },
+        {
+            "cancel": false,
+            "created": "05-07-2018 21:02:06",
+            "load": 6,
+            "plan": [
+                {
+                    "date": "",
+                    "user": "shlomi",
+                    "v": "0.0.1"
+                }
+            ],
+            "report": [],
+            "status": 0.0,
+            "tagged": [
+                "backend",
+                "frontend"
+            ],
+            "task": "Put basic rtl frontend neon based - as a start",
+            "updated": "05-07-2018 21:02:06"
+        }
+    ],
+    "types": {
+        "task": [
+            "desc",
+            "simple task"
+        ]
+    },
+    "users": [
+        {
+            "shlomi": {
+                "desc": "owner & lead developer",
+                "mail": ""
+            }
+        }
+    ],
+    "version": "0.0.1"
+}
