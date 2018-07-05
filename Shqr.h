@@ -12,7 +12,7 @@
 #include "Inc.h"
 
 class Shqr : public ShqrBase 
-{
+{ 
 	
 	public:
 
