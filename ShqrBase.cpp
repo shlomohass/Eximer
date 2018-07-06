@@ -5,7 +5,14 @@ By Shlomo Hassid
 #ifndef ShqrBase_CPP
 #define ShqrBase_CPP
 
+#include <cstdio>
 #include "ShqrBase.h"
+#include <memory>
+#include <stdexcept>
+#include <iomanip>
+#include <ctime>
+#include <sstream>
+
 
 ShqrBase::ShqrBase(int dbg)
 {
@@ -349,5 +356,38 @@ std::vector<cv::Point> ShqrBase::padVecRec(std::vector<cv::Point>& v, int pad) {
 		rv[3] = cv::Point(v[3].x + pad, v[3].y - pad);
 	}
 	return rv;
+}
+
+std::string ShqrBase::saveToFolder(cv::Mat& mat, const std::string& _pathSwap, const std::string& _name)
+{
+	auto t = std::time(nullptr);
+	auto tm = *std::localtime(&t);
+
+	std::ostringstream oss;
+	oss << std::put_time(&tm, "%d%m%Y_%H%M%S");
+
+	std::string path = _pathSwap + _name + "_" + oss.str() + ".jpg";
+	cv::imwrite(path, mat);
+
+	return path;
+}
+
+std::string ShqrBase::exec(const char* cmd) {
+	std::array<char, 128> buffer;
+	std::string result;
+	std::shared_ptr<FILE> pipe(_popen(cmd, "r"), _pclose);
+	if (!pipe) return "E";
+	while (!feof(pipe.get())) {
+		if (fgets(buffer.data(), 128, pipe.get()) != nullptr)
+			result += buffer.data();
+	}
+	return result;
+}
+
+std::string ShqrBase::executeQr(const std::string& pathApp, const std::string& pathImg)
+{
+	char temp[512];
+	sprintf(temp, "%s %s -%s", pathApp.c_str(),  pathImg.c_str(), "q");
+	return exec((char *)temp);
 }
 #endif

@@ -60,6 +60,12 @@ public:
 	std::vector<cv::Point> convRotatedToVec(cv::RotatedRect& rot);
 
 	std::vector<cv::Point> padVecRec(std::vector<cv::Point>& v, int pad);
+	
+	std::string saveToFolder(cv::Mat& mat, const std::string& _pathSwap, const std::string& _name);
+
+	std::string exec(const char* cmd);
+
+	std::string executeQr(const std::string& pathApp, const std::string& pathImg);
 };
 
 #endif

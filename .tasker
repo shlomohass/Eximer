@@ -88,6 +88,51 @@
             ],
             "task": "Put basic rtl frontend neon based - as a start",
             "updated": "05-07-2018 21:02:06"
+        },
+        {
+            "cancel": false,
+            "created": "06-07-2018 13:57:23",
+            "load": 4,
+            "plan": [
+                {
+                    "date": "",
+                    "user": "shlomi",
+                    "v": "0.0.1"
+                }
+            ],
+            "report": [
+                {
+                    "by": "shlomi",
+                    "date": "06-07-2018 13:58:46",
+                    "note": "added zbar integration by executing from the app + saving output to the exam structure",
+                    "status": 1.0
+                }
+            ],
+            "status": 1.0,
+            "tagged": [
+                "parser"
+            ],
+            "task": "Add qr string capabilities to parser",
+            "updated": "06-07-2018 13:57:23"
+        },
+        {
+            "cancel": false,
+            "created": "06-07-2018 13:58:07",
+            "load": 3,
+            "plan": [
+                {
+                    "date": "",
+                    "user": "shlomi",
+                    "v": "0.0.1"
+                }
+            ],
+            "report": [],
+            "status": 0.0,
+            "tagged": [
+                "parser"
+            ],
+            "task": "Validate Qr and create the qr parsed structure",
+            "updated": "06-07-2018 13:58:07"
         }
     ],
     "types": {

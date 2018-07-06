@@ -16,7 +16,8 @@ int main(int argc, char **argv)
 
 	//Get settings:
 	int debug_mode = 1;
-
+	std::string pathToSwap = "D:\\Dev\\Examer\\swap\\";
+	std::string pathToExec = "C:\\\"Program Files (x86)\"\\ZBar\\bin\\zbarimg";
 
 	//Create ShQr;
 	Shqr qrscanner(debug_mode);
@@ -67,8 +68,24 @@ int main(int argc, char **argv)
 		//cv::imshow("Fixed qr_raw bottom", image.bottom.Qr.qr_raw);
 	}
 
-	//Only if we have the markers found:
-	if (suc_scanner_top && suc_qr_top && suc_scanner_bottom && suc_qr_bottom) {
+
+	//Parse the Qr 
+	bool parsedqr = false;
+	if (suc_qr_top || suc_qr_bottom) {
+		//Save to swao and create the path:
+		std::string pathsaved = qrscanner.saveToFolder(
+			suc_qr_top ? image.top.Qr.qr : image.bottom.Qr.qr,
+			pathToSwap,
+			"qrfound"
+		);
+		//Parse with cmd (zbar - zbarimg)
+		image.exam.qrstring = qrscanner.executeQr(pathToExec ,pathsaved);
+		
+		//Validate and create the elements:
+		parsedqr = true;
+	}
+	//Only if we have the markers found and Qr parsed:
+	if (parsedqr) {
 
 		//Update Markers - to be in the same position of the entire page:
 		qrscanner.setFinalBaseMarkers(image);

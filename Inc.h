@@ -126,6 +126,8 @@ struct examProc {
 };
 struct examContainer {
 
+	std::string qrstring;
+
 	cv::Mat base_gray;
 	cv::Mat base_with_area;
 	cv::Mat exam_with_suggest_fix;
@@ -149,7 +151,6 @@ struct imagecontainer {
 	ShqrMarkers base_markers_top;
 	ShqrMarkers base_markers_bottom;
 	examContainer  exam;
-
 };
 
 #ifdef _WIN32
