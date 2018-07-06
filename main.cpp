@@ -1,7 +1,7 @@
 
 //______________________________________________________________________________________
-// Program : OpenCV based QR code Detection and Retrieval
-// Author  : Bharath Prabhuswamy
+// Program : Exam Parser QRcode Base + Checkboxes
+// Author  : Shlomo Hassid
 //______________________________________________________________________________________
 
 #include <opencv2/opencv.hpp>
@@ -84,6 +84,7 @@ int main(int argc, char **argv)
 		//Validate and create the elements:
 		parsedqr = true;
 	}
+
 	//Only if we have the markers found and Qr parsed:
 	if (parsedqr) {
 
