@@ -133,6 +133,25 @@
             ],
             "task": "Validate Qr and create the qr parsed structure",
             "updated": "06-07-2018 13:58:07"
+        },
+        {
+            "cancel": false,
+            "created": "08-07-2018 00:47:25",
+            "load": 4,
+            "plan": [
+                {
+                    "date": "",
+                    "user": "shlomi",
+                    "v": "0.0.1"
+                }
+            ],
+            "report": [],
+            "status": 0.0,
+            "tagged": [
+                "parser"
+            ],
+            "task": "Question grouping should consider multiline answers - affect the corrent method of groupig (it by distance calculation)",
+            "updated": "08-07-2018 00:47:25"
         }
     ],
     "types": {
