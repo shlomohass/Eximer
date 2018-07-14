@@ -27,6 +27,9 @@
     <ClCompile Include="ShqrBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QrStrParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shqr.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ShqrBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QrStrParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

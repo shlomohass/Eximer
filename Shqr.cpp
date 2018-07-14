@@ -57,7 +57,7 @@ void Shqr::proc_image(workimage& image) {
 	for (int i = 0; i < image.contours.size(); i++)
 	{
 		image.mu[i] = cv::moments(image.contours[i], false);
-		image.mc[i] = cv::Point2f(image.mu[i].m10 / image.mu[i].m00, image.mu[i].m01 / image.mu[i].m00);
+		image.mc[i] = cv::Point2f((float)image.mu[i].m10 / (float)image.mu[i].m00, (float)image.mu[i].m01 / (float)image.mu[i].m00);
 		//Plot the mass centers: 
 		cv::circle( image.masscenters,
 			cv::Point((int)image.mc[i].x, (int)image.mc[i].y),
@@ -110,9 +110,9 @@ bool Shqr::find_markers(workimage& image) {
 		int top, bottom, right;
 		float dist, slope;
 		int align;
-		AB = this->cv_distance(image.mc[A], image.mc[B]); //Measure the distance between the mass centers of those contuours.
-		BC = this->cv_distance(image.mc[B], image.mc[C]);
-		CA = this->cv_distance(image.mc[C], image.mc[A]);
+		AB = (int)this->cv_distance(image.mc[A], image.mc[B]); //Measure the distance between the mass centers of those contuours.
+		BC = (int)this->cv_distance(image.mc[B], image.mc[C]);
+		CA = (int)this->cv_distance(image.mc[C], image.mc[A]);
 
 		if (AB > BC && AB > CA)
 		{
@@ -192,9 +192,9 @@ bool Shqr::find_markers(workimage& image) {
 			image.Qr.src_qr_border.push_back(image.Qr.markers.O_BL[3]);
 
 			image.Qr.dst_qr_border.push_back(cv::Point2f(0, 0));
-			image.Qr.dst_qr_border.push_back(cv::Point2f(image.Qr.qr.cols, 0));
-			image.Qr.dst_qr_border.push_back(cv::Point2f(image.Qr.qr.cols, image.Qr.qr.rows));
-			image.Qr.dst_qr_border.push_back(cv::Point2f(0, image.Qr.qr.rows));
+			image.Qr.dst_qr_border.push_back(cv::Point2f((float)image.Qr.qr.cols, 0));
+			image.Qr.dst_qr_border.push_back(cv::Point2f((float)image.Qr.qr.cols, (float)image.Qr.qr.rows));
+			image.Qr.dst_qr_border.push_back(cv::Point2f(0, (float)image.Qr.qr.rows));
 
 			//Draw contours on the image
 			cv::cvtColor(image.gray, image.withselectedconturs, CV_GRAY2RGB);

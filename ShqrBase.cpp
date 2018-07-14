@@ -149,11 +149,11 @@ void ShqrBase::cv_getVertices(std::vector<std::vector<cv::Point> > contours, int
 	cv::Point2f A, B, C, D, W, X, Y, Z;
 
 	A = box.tl();
-	B.x = box.br().x;
-	B.y = box.tl().y;
+	B.x = (float)box.br().x;
+	B.y = (float)box.tl().y;
 	C = box.br();
-	D.x = box.tl().x;
-	D.y = box.br().y;
+	D.x = (float)box.tl().x;
+	D.y = (float)box.br().y;
 
 
 	W.x = (A.x + B.x) / 2;
@@ -207,8 +207,8 @@ void ShqrBase::cv_getVertices(std::vector<std::vector<cv::Point> > contours, int
 	}
 	else
 	{
-		int halfx = (A.x + B.x) / 2;
-		int halfy = (A.y + D.y) / 2;
+		int halfx = (int)(A.x + B.x) / 2;
+		int halfy = (int)(A.y + D.y) / 2;
 
 		for (int i = 0; i < contours[c_id].size(); i++)
 		{
@@ -389,5 +389,31 @@ std::string ShqrBase::executeQr(const std::string& pathApp, const std::string& p
 	char temp[512];
 	sprintf(temp, "%s %s -%s", pathApp.c_str(),  pathImg.c_str(), "q");
 	return exec((char *)temp);
+}
+
+std::vector<std::string> ShqrBase::splitStr(std::string str, std::string token) {
+	std::vector<std::string>result;
+	while (str.size()) {
+		int index = (int)str.find(token);
+		if (index != std::string::npos) {
+			result.push_back(str.substr(0, index));
+			str = str.substr(index + token.size());
+			if (str.size() == 0)result.push_back(str);
+		}
+		else {
+			result.push_back(str);
+			str = "";
+		}
+	}
+	return result;
+}
+
+std::vector<int> ShqrBase::splitInt(const std::string& str) {
+	std::vector<int> vec;
+	for (size_t i = 0; i < str.size(); ++i)
+	{                                 // This converts the char into an int and pushes it into vec
+		vec.push_back(str[i] - '0');  // The digits will be in the same order as before
+	}
+	return vec;
 }
 #endif

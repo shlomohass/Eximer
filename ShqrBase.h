@@ -66,6 +66,11 @@ public:
 	std::string exec(const char* cmd);
 
 	std::string executeQr(const std::string& pathApp, const std::string& pathImg);
+
+	static std::vector<std::string> splitStr(std::string str, std::string token);
+
+	static std::vector<int> splitInt(const std::string& str);
+
 };
 
 #endif

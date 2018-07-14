@@ -126,8 +126,21 @@
                     "v": "0.0.1"
                 }
             ],
-            "report": [],
-            "status": 0.0,
+            "report": [
+                {
+                    "by": "shlomi",
+                    "date": "14-07-2018 19:33:54",
+                    "note": "added hooks and exec to zbar parser after Qr is isolated.",
+                    "status": 0.300000011920929
+                },
+                {
+                    "by": "shlomi",
+                    "date": "15-07-2018 00:32:20",
+                    "note": "finished Qr string parser into a class now will help in parsing.",
+                    "status": 1.0
+                }
+            ],
+            "status": 1.0,
             "tagged": [
                 "parser"
             ],
@@ -152,6 +165,32 @@
             ],
             "task": "Question grouping should consider multiline answers - affect the corrent method of groupig (it by distance calculation)",
             "updated": "08-07-2018 00:47:25"
+        },
+        {
+            "cancel": false,
+            "created": "15-07-2018 00:33:53",
+            "load": 5,
+            "plan": [
+                {
+                    "date": "",
+                    "user": "shlomi",
+                    "v": "0.0.1"
+                }
+            ],
+            "report": [
+                {
+                    "by": "shlomi",
+                    "date": "15-07-2018 00:34:16",
+                    "note": "switched to adaptive threshold -> now its more inflated and works better",
+                    "status": 1.0
+                }
+            ],
+            "status": 1.0,
+            "tagged": [
+                "parser"
+            ],
+            "task": "Improve image proccessing of exam area for finding contours",
+            "updated": "15-07-2018 00:33:53"
         }
     ],
     "types": {
