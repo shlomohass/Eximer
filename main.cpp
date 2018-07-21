@@ -20,7 +20,8 @@ int main(int argc, char **argv)
 		/* 0 -> Good */		"SUC",
 		/* 1 -> Error */	"E1:Unable to find image.",
 		/* 2 -> Error */	"E2:Can't extract Qr's in given input.",
-		/* 3 -> Error */	"E3:Can't parse Qr and get correct parts."
+		/* 3 -> Error */	"E3:Can't parse Qr and get correct parts.",
+		/* 4 -> Error */	"E4:Can't Find enough checkboxes."
 	};
 
 	//Get settings:
@@ -115,29 +116,42 @@ int main(int argc, char **argv)
 
 				//Filter out checkboxes:
 				int check_count = exam.filterCheckAndBound(image.exam);
+				int totalNeededXheckboxes = 0;
+				std::for_each(parsedqr.AnswersCount.begin(), parsedqr.AnswersCount.end(), [&](int n) {
+					totalNeededXheckboxes += n;
+				});
 
 				//Check if enough checkboxes were fond
-				//Try to adjust if needed:
+				if (totalNeededXheckboxes <= check_count) {
 
-				//Create question groups:
-				int quest_count = exam.createQuestionsQrInfo(image.exam, parsedqr);
+					//Create question groups:
+					int quest_count = exam.createQuestionsQrInfo(image.exam, parsedqr);
 
-				//Mark answers:
-				int mark_count = exam.findMarkedCheckboxes(image.exam);
-				if (debug_mode) {
-					//cv::imshow("Base Interest area", image.exam.base_with_area);
-					//cv::imshow("Base Interest area", image.exam.exam_with_suggest_fix);
-					//cv::imshow("Exam After fix", image.exam.exam_after_per_fix_crop);
-					//cv::imshow("Exam Clean", image.exam.cleanExam);
-					//cv::imshow("Exam blur", image.exam.proc.blur);
-					//cv::imshow("Exam thres_blur", image.exam.proc.thres_blur);
-					//cv::imshow("Exam thres_gray", image.exam.proc.thres_gray);
-					//cv::imshow("Exam edges_thres_blur", image.exam.proc.edges_thres_blur);
-					//cv::imshow("Exam edges_thres_gray", image.exam.proc.edges_thres_gray);
-					cv::imshow("Exam masscenters", image.exam.proc.masscenters);
-					cv::imshow("Exam traces", image.exam.proc.traces);
+					//Mark answers:
+					int mark_count = exam.findMarkedCheckboxes(image.exam);
 
+					//Create result:
+					for (int i = 0; i < image.exam.questions.size(); i++) {
 
+					}
+
+					if (debug_mode) {
+						//cv::imshow("Base Interest area", image.exam.base_with_area);
+						//cv::imshow("Base Interest area", image.exam.exam_with_suggest_fix);
+						//cv::imshow("Exam After fix", image.exam.exam_after_per_fix_crop);
+						//cv::imshow("Exam Clean", image.exam.cleanExam);
+						//cv::imshow("Exam blur", image.exam.proc.blur);
+						//cv::imshow("Exam thres_blur", image.exam.proc.thres_blur);
+						//cv::imshow("Exam thres_gray", image.exam.proc.thres_gray);
+						//cv::imshow("Exam edges_thres_blur", image.exam.proc.edges_thres_blur);
+						//cv::imshow("Exam edges_thres_gray", image.exam.proc.edges_thres_gray);
+						cv::imshow("Exam masscenters", image.exam.proc.masscenters);
+						cv::imshow("Exam traces", image.exam.proc.traces);
+					}
+
+				}
+				else {
+					mes_return = 4; // Error Not enought checkboxes;
 				}
 			} else {
 				mes_return = 3; // Error Qr Parse;
@@ -148,8 +162,21 @@ int main(int argc, char **argv)
 	} else {
 		mes_return = 1; // Error image;
 	}
-	cv::waitKey();
-	std::cout << resmes[mes_return] << std::endl;
-	SH_PAUSE;
+
+	
+	//Print out results:
+	if (mes_return == 0) {
+		std::cout << resmes[mes_return] << std::endl;
+	} else {
+		std::cout << resmes[mes_return] << std::endl;
+	}
+	
+	//Halt until images released:
+	if (debug_mode) {
+		cv::waitKey();
+		SH_PAUSE;
+	}
+	
+	//Return:
 	return 0;
 }
