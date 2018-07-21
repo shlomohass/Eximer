@@ -10,6 +10,7 @@ By Shlomo Hassid
 #include <cmath>
 #include "ShqrBase.h"
 #include "Inc.h"
+#include "QrStrParser.h"
 
 class Exam : public ShqrBase
 {
@@ -36,8 +37,11 @@ public:
 	//Filter checkboxes:
 	int filterCheckAndBound(examContainer& exam);
 
-	//create question boxes:
-	int createQuestions(examContainer& exam);
+	//create question boxes -> use Qr info:
+	int createQuestionsQrInfo(examContainer& exam, QrStrParser& parsedqr);
+
+	//create question boxes -> use avg distance:
+	int createQuestionsByDistance(examContainer& exam);
 
 	//Find Marked answers:
 	int findMarkedCheckboxes(examContainer& exam);

@@ -158,8 +158,21 @@
                     "v": "0.0.1"
                 }
             ],
-            "report": [],
-            "status": 0.0,
+            "report": [
+                {
+                    "by": "shlomi",
+                    "date": "21-07-2018 09:43:10",
+                    "note": "Now Qr has the information of the question structure will be used in the checkboxes grouping",
+                    "status": 0.5
+                },
+                {
+                    "by": "shlomi",
+                    "date": "21-07-2018 09:58:36",
+                    "note": "Crerated two methods for grouping, added QR string based that now groups according to the Qr information",
+                    "status": 1.0
+                }
+            ],
+            "status": 1.0,
             "tagged": [
                 "parser"
             ],

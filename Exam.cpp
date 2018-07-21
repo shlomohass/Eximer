@@ -308,8 +308,46 @@ int Exam::filterCheckAndBound(examContainer& exam) {
 	return (int)exam.checkboxes.size();
 }
 
-//create question boxes:
-int Exam::createQuestions(examContainer& exam) {
+//create question boxes -> use Qr info:
+int Exam::createQuestionsQrInfo(examContainer& exam, QrStrParser& parsedqr) {
+
+	int totalcandid = (int)exam.checkboxes.size();
+	int checkboxesNeedle = 0;
+	for (int i = 0; i < parsedqr.QuestionCount; i++) {
+		exam.questions.push_back(question());
+		for (int j = 0; j < parsedqr.AnswersCount[i]; j++) {
+			exam.questions.back().checkboxesId.push_back(checkboxesNeedle);
+			checkboxesNeedle++;
+		}
+	}
+
+	//Create bounding boxes:
+	for (int i = 0; i < (int)exam.questions.size(); i++) {
+		std::vector<cv::Point> contour(4);
+		std::vector<cv::Point> box;
+		std::vector<cv::Point> inflated_box;
+		checkbox first = exam.checkboxes[exam.questions[i].checkboxesId[0]];
+		checkbox last = exam.checkboxes[exam.questions[i].checkboxesId.back()];
+		contour[0] = cv::Point(first.bounds.x, first.bounds.y);
+		contour[1] = cv::Point(first.bounds.x + first.bounds.width, first.bounds.y);
+		contour[2] = cv::Point(last.bounds.x + last.bounds.width, last.bounds.y + last.bounds.height);
+		contour[3] = cv::Point(last.bounds.x, last.bounds.y + last.bounds.height);
+
+		//Get four corners
+		inflated_box = this->padVecRec(contour, -5);
+		cv::RotatedRect rect = cv::minAreaRect(inflated_box);
+		box = this->convRotatedToVec(rect);
+
+		this->drawVectorToLines(box, exam.proc.traces, CV_RGB(0, 204, 0), 2);
+		//Save:
+		exam.questions[i].bounds = rect;
+
+	}
+	return (int)exam.questions.size();
+}
+
+//create question boxes -> use avg distance:
+int Exam::createQuestionsByDistance(examContainer& exam) {
 
 	int totalcheck = (int)exam.checkboxes.size();
 	float dist		= 0;

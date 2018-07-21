@@ -120,7 +120,7 @@ int main(int argc, char **argv)
 				//Try to adjust if needed:
 
 				//Create question groups:
-				int quest_count = exam.createQuestions(image.exam);
+				int quest_count = exam.createQuestionsQrInfo(image.exam, parsedqr);
 
 				//Mark answers:
 				int mark_count = exam.findMarkedCheckboxes(image.exam);
@@ -130,7 +130,7 @@ int main(int argc, char **argv)
 					//cv::imshow("Exam After fix", image.exam.exam_after_per_fix_crop);
 					//cv::imshow("Exam Clean", image.exam.cleanExam);
 					//cv::imshow("Exam blur", image.exam.proc.blur);
-					cv::imshow("Exam thres_blur", image.exam.proc.thres_blur);
+					//cv::imshow("Exam thres_blur", image.exam.proc.thres_blur);
 					//cv::imshow("Exam thres_gray", image.exam.proc.thres_gray);
 					//cv::imshow("Exam edges_thres_blur", image.exam.proc.edges_thres_blur);
 					//cv::imshow("Exam edges_thres_gray", image.exam.proc.edges_thres_gray);
