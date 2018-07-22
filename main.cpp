@@ -10,6 +10,7 @@
 #include "Inc.h"
 #include "Shqr.h"
 #include "QrStrParser.h"
+#include "ResJson.h"
 #include "Exam.h"
 
 int main(int argc, char **argv)
@@ -17,18 +18,20 @@ int main(int argc, char **argv)
 
 	//Message Results:
 	std::vector<std::string> resmes = {
-		/* 0 -> Good */		"SUC",
-		/* 1 -> Error */	"E1:Unable to find image.",
-		/* 2 -> Error */	"E2:Can't extract Qr's in given input.",
-		/* 3 -> Error */	"E3:Can't parse Qr and get correct parts.",
-		/* 4 -> Error */	"E4:Can't Find enough checkboxes."
+		/* 0 -> Good */		"successful operation.",
+		/* 1 -> Error */	"Unable to find image.",
+		/* 2 -> Error */	"Can't extract Qr's in given input.",
+		/* 3 -> Error */	"Can't parse Qr and get correct parts.",
+		/* 4 -> Error */	"Can't Find enough checkboxes."
 	};
 
 	//Get settings:
-	int mes_return = 0;
 	int debug_mode = 1;
 	std::string pathToSwap = "D:\\Dev\\Examer\\swap\\";
 	std::string pathToExec = "C:\\\"Program Files (x86)\"\\ZBar\\bin\\zbarimg";
+
+	//Create Json Result Object:
+	ResJson result(debug_mode, resmes);
 
 	//Create ShQr;
 	Shqr qrscanner(debug_mode);
@@ -151,29 +154,26 @@ int main(int argc, char **argv)
 
 				}
 				else {
-					mes_return = 4; // Error Not enought checkboxes;
+					result.SetCode(4); // Error Not enought checkboxes
 				}
 			} else {
-				mes_return = 3; // Error Qr Parse;
+				result.SetCode(3); // Error Qr Parse;
 			}
 		} else {
-			mes_return = 2; // Error Extract Qr;
+			result.SetCode(2); // Error Extract Qr;
 		}
 	} else {
-		mes_return = 1; // Error image;
+		result.SetCode(1); // Error image;
 	}
 
 	
 	//Print out results:
-	if (mes_return == 0) {
-		std::cout << resmes[mes_return] << std::endl;
-	} else {
-		std::cout << resmes[mes_return] << std::endl;
-	}
+	std::cout << result.getprint();
 	
 	//Halt until images released:
 	if (debug_mode) {
 		cv::waitKey();
+		std::cout << std::endl;
 		SH_PAUSE;
 	}
 	

@@ -146,6 +146,7 @@
     <ClCompile Include="Exam.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QrStrParser.cpp" />
+    <ClCompile Include="ResJson.cpp" />
     <ClCompile Include="Shqr.cpp" />
     <ClCompile Include="ShqrBase.cpp" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="Exam.h" />
     <ClInclude Include="Inc.h" />
     <ClInclude Include="QrStrParser.h" />
+    <ClInclude Include="ResJson.h" />
     <ClInclude Include="Shqr.h" />
     <ClInclude Include="ShqrBase.h" />
   </ItemGroup>

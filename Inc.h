@@ -23,6 +23,8 @@ By Shlomo Hassid
 #define SHQR_QR_PARTS_TOKEN ":"
 #define SHQR_QR_MINPARTS_COUNT 7
 
+#define SHQR_JSONRES_UNKNOWN_MES "Unknown error"
+
 enum QuestTypes {
 	american_four,
 	american_five,

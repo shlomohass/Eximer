@@ -71,6 +71,7 @@ public:
 
 	static std::vector<int> splitInt(const std::string& str);
 
+	std::string ShqrBase::ReplaceAll(std::string str, const std::string& from, const std::string& to);
 };
 
 #endif
