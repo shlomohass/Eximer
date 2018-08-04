@@ -42,8 +42,15 @@
                     "v": "0.0.1"
                 }
             ],
-            "report": [],
-            "status": 0.0,
+            "report": [
+                {
+                    "by": "shlomi",
+                    "date": "04-08-2018 16:02:02",
+                    "note": "Added a response class that prints the result in json",
+                    "status": 1.0
+                }
+            ],
+            "status": 1.0,
             "tagged": [
                 "parser"
             ],
@@ -61,8 +68,15 @@
                     "v": "0.0.1"
                 }
             ],
-            "report": [],
-            "status": 0.0,
+            "report": [
+                {
+                    "by": "shlomi",
+                    "date": "04-08-2018 16:40:16",
+                    "note": "integrated basic argvparser to the program with help file",
+                    "status": 0.899999976158142
+                }
+            ],
+            "status": 0.899999976158142,
             "tagged": [
                 "parser"
             ],

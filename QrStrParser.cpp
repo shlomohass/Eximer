@@ -22,12 +22,12 @@ QrStrParser::QrStrParser(int dbg) : ShqrBase(dbg)
 
 int QrStrParser::parse(const std::string& _str) {
 	//Split:
-	std::vector<std::string> parsedQr = ShqrBase::splitStr(_str, SHQR_QR_STRING_TOKEN);
+	std::vector<std::string> parsedQr = this->explode(_str, SHQR_QR_STRING_TOKEN);
 	std::vector<std::string> parsedQrParts;
 	//Validte found:
 	if (parsedQr.size() < 1) { return 1; }
 	//Parse:
-	parsedQrParts = ShqrBase::splitStr(parsedQr[0], SHQR_QR_PARTS_TOKEN);
+	parsedQrParts = this->explode(parsedQr[0], SHQR_QR_PARTS_TOKEN);
 	//Validate parts:
 	if (parsedQrParts.size() != SHQR_QR_MINPARTS_COUNT) { return 2; }
 	//Save:

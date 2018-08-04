@@ -67,7 +67,8 @@ public:
 
 	std::string executeQr(const std::string& pathApp, const std::string& pathImg);
 
-	static std::vector<std::string> splitStr(std::string str, std::string token);
+	std::vector<std::string> explode(std::string str, std::string token);
+	std::string implode(std::vector<std::string>& vec, const char* delim);
 
 	static std::vector<int> splitInt(const std::string& str);
 

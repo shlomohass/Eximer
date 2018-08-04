@@ -314,10 +314,28 @@ int Exam::createQuestionsQrInfo(examContainer& exam, QrStrParser& parsedqr) {
 	int totalcandid = (int)exam.checkboxes.size();
 	int checkboxesNeedle = 0;
 	for (int i = 0; i < parsedqr.QuestionCount; i++) {
+		int checkCount = 0;
+		//Create a Question Container:
 		exam.questions.push_back(question());
+		
+		//Fill with their checkboxes:
 		for (int j = 0; j < parsedqr.AnswersCount[i]; j++) {
 			exam.questions.back().checkboxesId.push_back(checkboxesNeedle);
 			checkboxesNeedle++;
+			checkCount++;
+		}
+
+		//Set type of question based on the answer count:
+		switch (checkCount) {
+			case 0: exam.questions.back().type = QuestTypes::open;
+				break;
+			case 2: exam.questions.back().type = QuestTypes::true_false;
+				break;
+			case 4: exam.questions.back().type = QuestTypes::american_four;
+				break;
+			case 5: exam.questions.back().type = QuestTypes::american_five;
+				break;
+			default: exam.questions.back().type = QuestTypes::american_four;
 		}
 	}
 

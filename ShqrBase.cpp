@@ -391,7 +391,7 @@ std::string ShqrBase::executeQr(const std::string& pathApp, const std::string& p
 	return exec((char *)temp);
 }
 
-std::vector<std::string> ShqrBase::splitStr(std::string str, std::string token) {
+std::vector<std::string> ShqrBase::explode(std::string str, std::string token) {
 	std::vector<std::string>result;
 	while (str.size()) {
 		int index = (int)str.find(token);
@@ -407,7 +407,12 @@ std::vector<std::string> ShqrBase::splitStr(std::string str, std::string token) 
 	}
 	return result;
 }
-
+std::string ShqrBase::implode(std::vector<std::string>& vec, const char* delim) {
+	std::stringstream container;
+	copy(vec.begin(), vec.end(), std::ostream_iterator<std::string>(container, delim));
+	std::string res = container.str();
+	return res.substr(0, (unsigned)res.length() - (unsigned)strlen(delim));
+}
 std::vector<int> ShqrBase::splitInt(const std::string& str) {
 	std::vector<int> vec;
 	for (size_t i = 0; i < str.size(); ++i)

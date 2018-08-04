@@ -25,11 +25,11 @@ By Shlomo Hassid
 
 #define SHQR_JSONRES_UNKNOWN_MES "Unknown error"
 
-enum QuestTypes {
-	american_four,
-	american_five,
-	true_false,
-	open
+enum class QuestTypes {
+	american_four = 4,
+	american_five = 5,
+	true_false = 2,
+	open = 0
 };
 struct ShqrMarkers {
 	std::vector<cv::Point2f> L_TL;

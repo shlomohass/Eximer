@@ -32,6 +32,7 @@ public:
 	//Methods:
 	ResJson(int dbg, const std::vector<std::string>& resmes);
 	void SetCode(int _code);
+	void SetBaseInfo(int _EaxmId, int _TotalPages, int _PageNumber, int _QuestionCount, int _StudentId);
 	std::string getprint();
 	virtual ~ResJson();
 };

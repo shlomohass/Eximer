@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="argvparser.cpp" />
     <ClCompile Include="Exam.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QrStrParser.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="ShqrBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="argvparser.h" />
     <ClInclude Include="Exam.h" />
     <ClInclude Include="Inc.h" />
     <ClInclude Include="QrStrParser.h" />
